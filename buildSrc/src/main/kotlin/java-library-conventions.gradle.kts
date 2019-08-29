@@ -114,6 +114,9 @@ if (project in mavenizedProjects) {
 		publications {
 			named<MavenPublication>("maven") {
 				from(components["java"])
+				pluginManager.withPlugin("java-test-fixtures") {
+					this@named.artifacts.removeIf { it.classifier == "test-fixtures" }
+				}
 				artifact(sourcesJar)
 				artifact(javadocJar)
 				pom {
@@ -270,6 +273,11 @@ tasks {
 		configFile = rootProject.file("src/checkstyle/checkstyleMain.xml")
 	}
 	checkstyleTest {
+		configFile = rootProject.file("src/checkstyle/checkstyleTest.xml")
+	}
+}
+pluginManager.withPlugin("java-test-fixtures") {
+	tasks.named<Checkstyle>("checkstyleTestFixtures").configure {
 		configFile = rootProject.file("src/checkstyle/checkstyleTest.xml")
 	}
 }
