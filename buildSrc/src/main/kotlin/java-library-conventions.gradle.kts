@@ -115,7 +115,9 @@ if (project in mavenizedProjects) {
 			named<MavenPublication>("maven") {
 				from(components["java"])
 				pluginManager.withPlugin("java-test-fixtures") {
-					this@named.artifacts.removeIf { it.classifier == "test-fixtures" }
+					afterEvaluate {
+						this@named.artifacts.removeIf { it.classifier == "test-fixtures" }
+					}
 				}
 				artifact(sourcesJar)
 				artifact(javadocJar)
