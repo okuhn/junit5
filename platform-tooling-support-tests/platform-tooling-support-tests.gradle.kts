@@ -76,5 +76,5 @@ tasks.test {
 		includeEngines("archunit")
 	}
 
-	maxParallelForks = 2
+	maxParallelForks = 3
 }
