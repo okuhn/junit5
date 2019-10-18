@@ -52,5 +52,5 @@ else
   echo "Creating and publishing documentation..."
   echo
   cp --force "${current}" "${published}"
-  ./gradlew --scan gitPublishPush
+  ./gradlew --scan --parallel gitPublishPush
 fi
