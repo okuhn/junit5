@@ -75,4 +75,6 @@ tasks.test {
 	(options as JUnitPlatformOptions).apply {
 		includeEngines("archunit")
 	}
+
+	maxParallelForks = 2
 }
